@@ -1,0 +1,52 @@
+public  abstract class Cell {
+    protected int row;
+    protected int col;
+
+    public Cell(int row, int col) {
+        this.col = col;
+        this.row = row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public abstract char getSymbol();
+
+    public abstract boolean isConnectable();
+
+}
+class EmptyCell extends Cell {
+
+    public EmptyCell(int row, int col) {
+        super(row, col);
+    }
+
+    @Override
+    public boolean isConnectable() {
+        return false;
+    }
+
+    @Override
+    public char getSymbol() {
+        return 'E';
+    }
+}
+class RoadCell extends Cell{
+
+    public RoadCell(int row,int col){
+        super(row, col);
+    }
+    @Override
+    public boolean isConnectable(){
+        return true;
+    }
+    @Override
+    public char getSymbol() {
+        return 'R';
+    }
+}
