@@ -1,0 +1,14 @@
+public class Hospital extends Service{
+   public Hospital(int row, int col){
+   super(row, col, 3);
+ }
+
+@Override 
+ public char getSymbol(){
+ return 'D';
+ }
+@Override
+ public String getServiceType(){
+ return "health"; 
+}
+}
