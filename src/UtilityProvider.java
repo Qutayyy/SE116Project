@@ -1,4 +1,4 @@
-package objectville.cells;
+
 
 public abstract class UtilityProvider extends Cell {
 
