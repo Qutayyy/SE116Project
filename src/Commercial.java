@@ -1,4 +1,3 @@
-package objectville.cells;
 
 import java.util.EnumSet;
 import java.util.Set;
