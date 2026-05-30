@@ -1,4 +1,4 @@
-public class Hospital extends Service{
+public class Hospital extends ServiceProvider {
     public Hospital(int row, int col){
         super(row, col, 3);
     }

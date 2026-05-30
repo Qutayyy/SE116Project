@@ -1,7 +1,7 @@
-abstract class Service extends Cell{
+public abstract class ServiceProvider extends Cell{
 private int radius;
 
-    public Service(int row, int col, int radius) {
+    public ServiceProvider(int row, int col, int radius) {
         super(row, col);
         this.radius = radius;
     }
