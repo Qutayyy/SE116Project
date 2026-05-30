@@ -8,7 +8,7 @@ public class School extends ServiceProvider {
         return 'S';
     }
     @Override
-    public String getServiceType() {
-        return "education";
+    public ServiceConsumer.Service getServiceType() {
+        return ServiceConsumer.Service.EDUCATION;
     }
 }

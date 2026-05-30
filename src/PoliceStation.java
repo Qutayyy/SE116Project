@@ -8,6 +8,5 @@ public class PoliceStation extends ServiceProvider {
         return 'F';
     }
     @Override
-    public String getServiceType(){
-        return "security"; }
+    public ServiceConsumer.Service getServiceType(){return ServiceConsumer.Service.SECURITY; }
 }
