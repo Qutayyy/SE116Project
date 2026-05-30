@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class City {
     private final int rows;
     private final int cols;
@@ -7,6 +9,7 @@ public class City {
         this.rows = rows;
         this.cols = cols;
         this.grid = new Cell[rows][cols];
+        // Sets all Empty by default.
         for (int r =0; r < rows; r++){
             for (int c = 0; c < cols; c++){
                 grid[r][c] = new EmptyCell(r, c);
@@ -27,6 +30,44 @@ public class City {
     // Prevents ArrayIndexOutOfBoundException for BFS and service distribution.
     public boolean inBounds(int r, int c) {
         return r >= 0 && r < rows && c >= 0 && c <cols;
+    }
+
+    // Filtered Lists: Returns all Zones and Service and Utility Providers
+    public ArrayList<Zone> allZones(){
+        ArrayList<Zone> list = new ArrayList<>();
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                if (grid[r][c] instanceof Zone) {
+                    list.add((Zone) grid[r][c]);
+                }
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<UtilityProvider> allUtilityProviders(){
+        ArrayList<UtilityProvider> list = new ArrayList<>();
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                if (grid[r][c] instanceof UtilityProvider) {
+                    list.add((UtilityProvider) grid[r][c]);
+                }
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<ServiceProvider> allServiceProviders() {
+        ArrayList<ServiceProvider> list = new ArrayList<>();
+
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                if (grid[r][c] instanceof ServiceProvider) {
+                    list.add((ServiceProvider) grid[r][c]);
+                }
+            }
+        }
+        return list;
     }
 
 }
