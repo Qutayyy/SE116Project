@@ -18,4 +18,6 @@ public  abstract class Cell {
     public abstract char getSymbol();
 
     public boolean isConnectable() { return false; }
+
+    public void resetTickState() {}
 }
