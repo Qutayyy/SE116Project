@@ -9,7 +9,7 @@ public abstract class Zone extends Cell implements UtilityConsumer, ServiceConsu
 
     private int level = 0;
   
-    private int currentOutput = 0
+    private int currentOutput = 0;
   
     private final Map<Utility, Integer> receivedUtilities = new EnumMap<>(Utility.class);
 
