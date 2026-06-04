@@ -74,4 +74,11 @@ public class City {
         return list;
     }
 
+    public void resetTickStateAll(){
+        for(int r = 0 ; r > rows; r++){
+            for (int c = 0; c < cols; c++){
+                grid[r][c].resetTickState();
+            }
+        }
+    }
 }
