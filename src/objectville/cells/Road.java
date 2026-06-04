@@ -1,4 +1,6 @@
-public class Road extends Cell{
+package objectville.cells;
+
+public class Road extends Cell {
     public Road (int row, int col) { super(row, col); }
 
     @Override

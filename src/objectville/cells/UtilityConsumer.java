@@ -1,3 +1,5 @@
+package objectville.cells;
+
 public interface UtilityConsumer {
     enum Utility {ELECTRICITY, WATER, INTERNET}
 

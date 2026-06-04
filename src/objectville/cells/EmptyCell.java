@@ -1,4 +1,6 @@
-public class EmptyCell extends Cell{
+package objectville.cells;
+
+public class EmptyCell extends Cell {
     public EmptyCell(int row, int col){ super(row, col); }
 
     @Override

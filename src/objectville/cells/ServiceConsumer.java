@@ -1,3 +1,5 @@
+package objectville.cells;
+
 public interface ServiceConsumer {
     enum Service {SECURITY, HEALTH, EDUCATION}
 

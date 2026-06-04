@@ -1,3 +1,5 @@
+package objectville.cells;
+
 public  abstract class Cell {
     private final int row;
     private final int col;

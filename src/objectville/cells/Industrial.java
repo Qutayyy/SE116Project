@@ -1,11 +1,12 @@
+package objectville.cells;
 
 import java.util.EnumSet;
 import java.util.Set;
 
 public class Industrial extends Zone {
 
-    private static final Set<Utility> REQUIRED =
-        EnumSet.of(Utility.ELECTRICITY, Utility.WATER);
+    private static final Set<UtilityConsumer.Utility> REQUIRED =
+        EnumSet.of(UtilityConsumer.Utility.ELECTRICITY, UtilityConsumer.Utility.WATER);
 
     public Industrial(int row, int col) { 
         super(row, col); 
@@ -16,7 +17,7 @@ public class Industrial extends Zone {
         return 'I'; 
     }
     @Override 
-    public Set<Utility> getRequiredUtilities() { 
+    public Set<UtilityConsumer.Utility> getRequiredUtilities() {
         return REQUIRED; 
     }
 
@@ -24,7 +25,7 @@ public class Industrial extends Zone {
     protected int computeQualifiedLevel() {
         
         if (getReceivedPopulation() <= 0) return 0; 
-        boolean l2 = hasService(Service.SECURITY);
+        boolean l2 = hasService(ServiceConsumer.Service.SECURITY);
         boolean l3 = l2 && getReceivedPopulation() > minDeliveredAcrossRequired();
         if (l3) return 3;
         if (l2) return 2;

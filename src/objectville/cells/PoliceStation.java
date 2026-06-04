@@ -1,3 +1,5 @@
+package objectville.cells;
+
 public class PoliceStation extends ServiceProvider {
     public PoliceStation(int row, int col){
         super(row, col, 5);

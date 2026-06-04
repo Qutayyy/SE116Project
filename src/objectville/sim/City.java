@@ -1,3 +1,7 @@
+package objectville.sim;
+
+import objectville.cells.*;
+
 import java.util.ArrayList;
 
 public class City {

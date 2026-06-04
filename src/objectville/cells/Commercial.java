@@ -1,3 +1,4 @@
+package objectville.cells;
 
 import java.util.EnumSet;
 import java.util.Set;
@@ -5,8 +6,8 @@ import java.util.Set;
 
 public class Commercial extends Zone {
 
-    private static final Set<Utility> REQUIRED =
-        EnumSet.of(Utility.ELECTRICITY, Utility.WATER, Utility.INTERNET);
+    private static final Set<UtilityConsumer.Utility> REQUIRED =
+        EnumSet.of(UtilityConsumer.Utility.ELECTRICITY, UtilityConsumer.Utility.WATER, UtilityConsumer.Utility.INTERNET);
 
     public Commercial(int row, int col) {
       super(row, col); 
@@ -17,14 +18,14 @@ public class Commercial extends Zone {
         return 'C'; 
     }
     @Override
-    public Set<Utility> getRequiredUtilities() { 
+    public Set<UtilityConsumer.Utility> getRequiredUtilities() {
         return REQUIRED;
     }
 
     @Override
     protected int computeQualifiedLevel() {
         if (getReceivedPopulation() <= 0 || getReceivedGoods() <= 0) return 0;
-        boolean l2 = hasService(Service.SECURITY);
+        boolean l2 = hasService(ServiceConsumer.Service.SECURITY);
         int m = minDeliveredAcrossRequired();
         boolean l3 = l2 && getReceivedPopulation() > m && getReceivedGoods() > m;
         if (l3) return 3;

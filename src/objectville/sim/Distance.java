@@ -1,3 +1,5 @@
+package objectville.sim;
+
 /* We used Manhattan distance because we only move in 4 direction,
  and it is easier to calculate since there are no square root math.*/
 public class Distance {

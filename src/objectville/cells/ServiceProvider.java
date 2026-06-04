@@ -1,4 +1,6 @@
-public abstract class ServiceProvider extends Cell{
+package objectville.cells;
+
+public abstract class ServiceProvider extends Cell {
 private int radius;
 
     public ServiceProvider(int row, int col, int radius) {

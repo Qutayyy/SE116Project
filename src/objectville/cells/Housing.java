@@ -1,11 +1,12 @@
+package objectville.cells;
 
 import java.util.EnumSet;
 import java.util.Set;
 
 public class Housing extends Zone {
 
-    private static final Set<Utility> REQUIRED =
-        EnumSet.of(Utility.ELECTRICITY, Utility.WATER, Utility.INTERNET);
+    private static final Set<UtilityConsumer.Utility> REQUIRED =
+        EnumSet.of(UtilityConsumer.Utility.ELECTRICITY, UtilityConsumer.Utility.WATER, UtilityConsumer.Utility.INTERNET);
 
     public Housing(int row, int col) {
         super(row, col);
@@ -16,16 +17,16 @@ public class Housing extends Zone {
         return 'H';
     }
     @Override
-    public Set<Utility> getRequiredUtilities() {
+    public Set<UtilityConsumer.Utility> getRequiredUtilities() {
         return REQUIRED;
     }
 
     @Override
     protected int computeQualifiedLevel() {
        
-        boolean l2 = hasService(Service.SECURITY)
-                  && hasService(Service.HEALTH)
-                  && hasService(Service.EDUCATION);
+        boolean l2 = hasService(ServiceConsumer.Service.SECURITY)
+                  && hasService(ServiceConsumer.Service.HEALTH)
+                  && hasService(ServiceConsumer.Service.EDUCATION);
       
         boolean l3 = l2 && getReceivedLifestyle() > 0;
         if (l3) return 3;

@@ -1,3 +1,5 @@
+package objectville.cells;
+
 public class School extends ServiceProvider {
     public School(int row, int col) {
         super(row, col, 4);
