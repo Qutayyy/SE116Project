@@ -137,6 +137,31 @@ public class Simulator {
         }
     }
 
+    //Step 4 : Update Zones
+    private void step4_updateZones(){
+        for (Zone z : city.allZones()) {
+            z.updateLevel();
+            z.computeAndStoreOutput();
+        }
+    }
+
+    //Step 5 Accumulate Production
+    private void step5_accumulateProduction(){
+        int totPop = 0;
+        int totGoods = 0;
+        int totLife = 0;
+
+        for (Zone z : city.allZones()){
+            int out = z.getCurrentOutput();
+            if (z instanceof Housing) totPop += out;
+            else if (z instanceof  Industrial)totGoods += out;
+            else if (z instanceof  Commercial)totLife += out;
+        }
+        prevTotalGoods = totGoods;
+        prevTotalPopulation = totPop;
+        prevTotalLifestyle = totLife;
+    }
+
 
 
 }
