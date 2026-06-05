@@ -18,7 +18,13 @@ public class Simulator {
     }
 
     public void runTick(){
-       city.resetTickStateAll();
+        System.out.println("Tick " + tickNumber);
+        city.resetTickStateAll();
+        step1_distributeServices();
+        step2_distributeUtilities();
+        step3_distributeResources();
+        step4_updateZones();
+        step5_accumulateProduction();
 
     }
 
@@ -49,6 +55,13 @@ public class Simulator {
         }
     }
     //Step 2 : BFS
+
+    private void step2_distributeUtilities() {
+        for (UtilityProvider up : city.allUtilityProviders()) {
+            bfsDistribute(up);
+        }
+    }
+
     private void bfsDistribute(UtilityProvider provider){
         int rows = city.getRows();
         int cols = city.getCols();
