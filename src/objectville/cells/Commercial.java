@@ -24,10 +24,9 @@ public class Commercial extends Zone {
 
     @Override
     protected int computeQualifiedLevel() {
-        if (getReceivedPopulation() <= 0 || getReceivedGoods() <= 0) return 0;
         boolean l2 = hasService(ServiceConsumer.Service.SECURITY);
-        int m = minDeliveredAcrossRequired();
-        boolean l3 = l2 && getReceivedPopulation() > m && getReceivedGoods() > m;
+        boolean l3 = l2 && getReceivedPopulation() > 0 && getReceivedGoods() > 0;
+
         if (l3) return 3;
         if (l2) return 2;
         return 1;
