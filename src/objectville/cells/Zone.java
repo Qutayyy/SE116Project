@@ -9,6 +9,8 @@ public abstract class Zone extends Cell implements UtilityConsumer, ServiceConsu
 
 
     private int level = 0;
+
+    private int previousLevel = 0;
   
     private int currentOutput = 0;
   
@@ -110,6 +112,7 @@ public abstract class Zone extends Cell implements UtilityConsumer, ServiceConsu
 
   
     public void updateLevel() {
+        previousLevel = level;
         if (minDeliveredAcrossRequired() == -1) {
             level = 0;
             return;
@@ -121,6 +124,8 @@ public abstract class Zone extends Cell implements UtilityConsumer, ServiceConsu
         if (level < 0) level = 0;
         if (level > 3) level = 3;
     }
+
+    public int getPreviousLevel() { return previousLevel; }
 
     protected abstract int computeQualifiedLevel();
 

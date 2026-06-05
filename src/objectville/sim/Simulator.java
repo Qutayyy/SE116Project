@@ -100,6 +100,8 @@ public class Simulator {
                 if (give > 0){
                     consumer.receiveUtility(utility, give);
                     budget -= give;
+                    System.out.println(cell.getDisplayName() + " at (" + r + "," + c
+                            + ") received " + give + " " + utilityName(utility));
                 }
             }
 
@@ -158,6 +160,26 @@ public class Simulator {
         for (Zone z : city.allZones()) {
             z.updateLevel();
             z.computeAndStoreOutput();
+
+            int r = z.getRow();
+            int c = z.getCol();
+            String name = z.getDisplayName();
+            int output = z.getCurrentOutput();
+            int oldLevel = z.getPreviousLevel();
+            int newLevel = z.getLevel();
+
+            String outputType;
+            if (z instanceof Housing)         outputType = "population";
+            else if (z instanceof Industrial) outputType = "goods";
+            else                              outputType = "lifestyle";
+
+            System.out.println(name + " at (" + r + "," + c + ") generated " + output + " " + outputType);
+
+            if (newLevel > oldLevel) {
+                System.out.println(name + " at (" + r + "," + c + ") levels up from " + oldLevel + " to " + newLevel);
+            } else if (newLevel < oldLevel) {
+                System.out.println(name + " at (" + r + "," + c + ") levels down from " + oldLevel + " to " + newLevel);
+            }
         }
     }
 
@@ -195,5 +217,4 @@ public class Simulator {
             default: return u.name().toLowerCase();
         }
     }
-    
 }
