@@ -4,6 +4,7 @@ import objectville.cells.*;
 import objectville.cells.UtilityConsumer.Utility;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 
 public class Simulator {
@@ -101,6 +102,41 @@ public class Simulator {
             }
         }
     }
+
+    //Step 3 : Product Distribution
+
+    private void step3_distributeResources() {
+        ArrayList<Zone> zones = city.allZones();
+
+        int houseCount = 0, indCount = 0, comCount = 0;
+        for (Zone z : zones) {
+            if (z instanceof Housing) houseCount++;
+            else if (z instanceof Industrial) indCount++;
+            else if (z instanceof Commercial) comCount++;
+        }
+
+        //Population --> industrial and commercial
+        int popTargets = indCount + comCount;
+        int popPer = (popTargets > 0) ? (prevTotalPopulation / popTargets) : 0;
+
+        //Goods --> commercial
+        int goodsPer = (comCount > 0) ? (prevTotalGoods / comCount) : 0;
+
+        //Lifestyle --> housing
+        int lifePer = (houseCount > 0) ? (prevTotalLifestyle / houseCount) : 0;
+
+        for (Zone z : zones) {
+            if (z instanceof Housing) {
+                z.receiveLifestyle(lifePer);
+            } else if (z instanceof Industrial) {
+                z.receivePopulation(popPer);
+            } else if (z instanceof Commercial) {
+                z.receivePopulation(popPer);
+                z.receiveGoods(goodsPer);
+            }
+        }
+    }
+
 
 
 }
