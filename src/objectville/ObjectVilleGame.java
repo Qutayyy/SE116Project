@@ -16,6 +16,7 @@ public class ObjectVilleGame {
         int ticks;
         try {
             ticks = Integer.parseInt(args[1]);
+            if (ticks < 0) throw new NumberFormatException();
         } catch (RuntimeException e) {
             System.err.println("Error: Tick count must be a non-negative integer");
             System.exit(1);
