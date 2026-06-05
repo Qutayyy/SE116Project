@@ -43,4 +43,8 @@ public class Housing extends Zone {
             default: return 0;
         }
     }
+    @Override
+    public String getDisplayName(){
+        return "House";
+    }
 }

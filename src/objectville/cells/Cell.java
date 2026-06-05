@@ -19,6 +19,10 @@ public  abstract class Cell {
 
     public abstract char getSymbol();
 
+    public String getDisplayName(){
+        return getClass().getSimpleName();
+    }
+
     public boolean isConnectable() { return false; }
 
     public void resetTickState() {}
