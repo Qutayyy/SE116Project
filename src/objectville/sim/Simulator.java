@@ -48,10 +48,20 @@ public class Simulator {
                     }
 
                     Cell cell = city.getCellAt(r,c);
-                    if(cell instanceof ServiceConsumer){
-                        ((ServiceConsumer) cell).receiveService(sp.getServiceType());
-                        System.out.println(cell.getDisplayName() + " at (" + r + "," + c
-                                + ") received " + serviceName(sp.getServiceType()) + " service");
+                    if (cell instanceof Zone) {
+                        Zone z = (Zone) cell;
+                        Service serviceType = sp.getServiceType();
+
+                        boolean applicable = false;
+                        if (z instanceof Housing) applicable = true;
+                        else if (z instanceof Industrial) applicable = (serviceType == ServiceConsumer.Service.SECURITY);
+                        else if (z instanceof Commercial) applicable = (serviceType == ServiceConsumer.Service.SECURITY);
+
+                        if (applicable) {
+                            z.receiveService(serviceType);
+                            System.out.println(z.getDisplayName() + " at (" + r + "," + c
+                                    + ") received " + serviceName(serviceType) + " service");
+                        }
                     }
                 }
             }
