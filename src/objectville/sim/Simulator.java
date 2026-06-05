@@ -18,7 +18,7 @@ public class Simulator {
         this.city = city;
     }
 
-    public void runTick(){
+    public void runTick(int tickNumber){
         System.out.println("Tick " + tickNumber);
         city.resetTickStateAll();
         step1_distributeServices();
