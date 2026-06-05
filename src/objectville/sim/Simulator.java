@@ -2,6 +2,7 @@ package objectville.sim;
 
 import objectville.cells.*;
 import objectville.cells.UtilityConsumer.Utility;
+import static objectville.cells.ServiceConsumer.Service;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -49,6 +50,8 @@ public class Simulator {
                     Cell cell = city.getCellAt(r,c);
                     if(cell instanceof ServiceConsumer){
                         ((ServiceConsumer) cell).receiveService(sp.getServiceType());
+                        System.out.println(cell.getDisplayName() + " at (" + r + "," + c
+                                + ") received " + serviceName(sp.getServiceType()) + " service");
                     }
                 }
             }
@@ -175,6 +178,22 @@ public class Simulator {
         prevTotalLifestyle = totLife;
     }
 
+    private static String serviceName(Service s) {
+        switch (s) {
+            case SECURITY: return "security";
+            case HEALTH: return "health";
+            case EDUCATION: return "education";
+            default: return s.name().toLowerCase();
+        }
+    }
 
-
+    private static String utilityName(Utility u) {
+        switch (u) {
+            case ELECTRICITY: return "electricity";
+            case WATER: return "water";
+            case INTERNET: return "internet";
+            default: return u.name().toLowerCase();
+        }
+    }
+    
 }
