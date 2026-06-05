@@ -29,7 +29,7 @@ public class City {
         return cols;
     }
     public Cell getCellAt(int r, int c){ return grid[r][c]; }
-    public void setCellA(int r, int c, Cell cell) { grid[r][c] = cell; }
+    public void setCellAt(int r, int c, Cell cell) { grid[r][c] = cell; }
 
     // Prevents ArrayIndexOutOfBoundException for BFS and service distribution.
     public boolean inBounds(int r, int c) {
